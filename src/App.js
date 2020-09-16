@@ -6,6 +6,7 @@ import Home from "./Home";
 import Checkout from "./Checkout";
 import Login from "./Login";
 import { auth } from "./firebase";
+import "firebase/auth";
 import { useStateValue } from "./StateProvider";
 
 function App() {
@@ -13,7 +14,6 @@ function App() {
   useEffect(() => {
     // will only run once when the app component loads ...
     auth.onAuthStateChanged((authUser) => {
-      console.log("The user is >>>>>", authUser);
       if (authUser) {
         // logged in
         dispatch({
@@ -31,7 +31,6 @@ function App() {
   }, []);
 
   return (
-    // Bem
     <Router>
       <div className="App">
         <Switch>
